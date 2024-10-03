@@ -28,7 +28,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             ""id"": ""b559304f-7e98-434f-b20d-4333a8b0d6e9"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""732d43cb-9d92-4522-8ac5-b6b77f39907b"",
                     ""expectedControlType"": ""Button"",
@@ -45,7 +45,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -56,7 +56,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Newaction = m_Player.FindAction("New action", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -118,12 +118,12 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-    private readonly InputAction m_Player_Newaction;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @InputSystem m_Wrapper;
         public PlayerActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Player_Newaction;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -133,16 +133,16 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -162,6 +162,6 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     public PlayerActions @Player => new PlayerActions(this);
     public interface IPlayerActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

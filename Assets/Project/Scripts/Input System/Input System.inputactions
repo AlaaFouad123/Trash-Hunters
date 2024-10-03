@@ -6,7 +6,7 @@
             "id": "b559304f-7e98-434f-b20d-4333a8b0d6e9",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "732d43cb-9d92-4522-8ac5-b6b77f39907b",
                     "expectedControlType": "Button",
@@ -23,7 +23,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -7,6 +7,7 @@ public class Interact : MonoBehaviour
 
     private UISystem _playerUI; // Reference to the UISystem
     private Interactable currentInteractable; // The current interactable object
+    private InputManager _inputManager;
 
     private ServiceLocator serviceLocator; // Reference to the ServiceLocator
 
@@ -20,6 +21,7 @@ public class Interact : MonoBehaviour
     private void Start()
     {
         serviceLocator = ServiceLocator.Instance;
+        _inputManager = ServiceLocator.Instance.GetService<InputManager>();
 
         if (serviceLocator.TryGetService<UISystem>(out var _UISystem))
         {
@@ -88,7 +90,7 @@ public class Interact : MonoBehaviour
         if (currentInteractable != null)
         {
             currentInteractable.RemoveOutline();
-            bool shouldInteract = currentInteractable.AutoInteract;
+            bool shouldInteract = currentInteractable.AutoInteract || _inputManager.PlayerActions.Interact.triggered;
 
             if (shouldInteract)
             {
