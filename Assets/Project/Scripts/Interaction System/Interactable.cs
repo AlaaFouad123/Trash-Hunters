@@ -111,24 +111,23 @@ public abstract class Interactable : MonoBehaviour
     internal void BaseInteract(GameObject gameObject)
     {
         if (((1 << gameObject.layer) & _layersInteractedWith) != 0)
-            Interact();
+            Interact(gameObject);
         else
             Logging.LogWarning($"Object {gameObject.name} is not interactable");
     }
 
     // Abstract method to be implemented by derived classes to define specific interaction logic.
-    protected virtual void Interact()
+    protected virtual void Interact(GameObject gameObject)
     {
-        //if (UseParticleEffect)
-        //{
-        //    ParticleSystem particleInstance = particleInstanceObject.GetComponent<ParticleSystem>();
-        //    particleInstance.transform.position = _objectType.transform.position;
-        //    particleInstance.Play();
-        //}
+        if (UseParticleEffect)
+        {
+            _interactionParticals.transform.position = gameObject.transform.position;
+            _interactionParticals.Play();
+        }
 
-        //if (_AddSFX)
-        //{
-        //}
+        if (_AddSFX)
+        {
+        }
 
         if (_useEvents)
             if (gameObject.TryGetComponent<InteractableEvents>(out var _events))

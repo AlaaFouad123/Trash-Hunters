@@ -35,20 +35,20 @@ public class InteractableEditor : Editor
         if (!interactProperty.boolValue)
             EditorGUILayout.PropertyField(autoInteractProperty);
 
-        // Draw the _useParticleEffect field
-        EditorGUILayout.PropertyField(so.FindProperty("_useParticleEffect"));
-
-        // If _useParticleEffect is true, draw the _interactionParticals field
-        if (_interactable.UseParticleEffect)
-            EditorGUILayout.PropertyField(so.FindProperty("_interactionParticals"));
-
-        // Add SFX toggle and conditional EventReference field
-        EditorGUILayout.PropertyField(addSFXProperty);
-        if (addSFXProperty.boolValue) // Only show the EventReference field if _AddSFX is true
-            EditorGUILayout.PropertyField(sfxProperty);
-
         if (autoInteractProperty.boolValue || interactProperty.boolValue)
         {
+            // Draw the _useParticleEffect field
+            EditorGUILayout.PropertyField(so.FindProperty("_useParticleEffect"));
+
+            // If _useParticleEffect is true, draw the _interactionParticals field
+            if (_interactable.UseParticleEffect)
+                EditorGUILayout.PropertyField(so.FindProperty("_interactionParticals"));
+
+            // Add SFX toggle and conditional EventReference field
+            EditorGUILayout.PropertyField(addSFXProperty);
+            if (addSFXProperty.boolValue) // Only show the EventReference field if _AddSFX is true
+                EditorGUILayout.PropertyField(sfxProperty);
+
             if (interactProperty.boolValue)
             {
                 SerializedProperty outlineMaterialProperty = so.FindProperty("_outlineMaterial");

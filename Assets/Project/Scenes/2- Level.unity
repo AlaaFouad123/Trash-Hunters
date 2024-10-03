@@ -176,7 +176,6 @@ GameObject:
   - component: {fileID: 778092618}
   - component: {fileID: 778092617}
   - component: {fileID: 778092622}
-  - component: {fileID: 778092621}
   m_Layer: 30
   m_Name: Object
   m_TagString: Untagged
@@ -272,33 +271,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &778092621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778092616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dc32711856bf6f4bb76f03ee56d920c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 778092616}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &778092622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,9 +289,9 @@ MonoBehaviour:
   _outlineMaterial: {fileID: 0}
   renderers: []
   _interact: 0
-  _autoInteract: 1
+  _autoInteract: 0
   _promptMessage: 
-  _useEvents: 1
+  _useEvents: 0
   _useParticleEffect: 0
   _interactionParticals: {fileID: 0}
   _AddSFX: 0

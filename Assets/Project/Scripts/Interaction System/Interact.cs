@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Interact : MonoBehaviour
 {
     // Serialized field that can be set in the Unity editor
