@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 2917524202723189472}
   - component: {fileID: -91530937278442516}
   - component: {fileID: -9193173538334305471}
-  m_Layer: 0
+  - component: {fileID: -7143325309528592213}
+  - component: {fileID: 8023223863528333400}
+  m_Layer: 30
   m_Name: Hooking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,3 +137,30 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.010000001
   m_Center: {x: -0.000000003259629, y: -0.0000000032596295, z: 9.7144515e-17}
+--- !u!114 &-7143325309528592213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6684154258111035588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14776447f2bec8844961962c4caa9b4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8023223863528333400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6684154258111035588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc0b798486c6724caa2a19cb8fabd17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactableLayerMask:
+    serializedVersion: 2
+    m_Bits: 2147483648
