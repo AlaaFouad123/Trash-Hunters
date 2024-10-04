@@ -13,7 +13,7 @@ public abstract class Interactable : MonoBehaviour
     [Header("Interaction Flags")]
     [SerializeField] private bool _interact; // Flag to enable or disable interaction with this object.
 
-    [SerializeField] private bool _autoInteract; // If true, the object will interact automatically without player input.
+    [SerializeField] private bool _autoInteract; // If true, the object will interact automatically without player _input.
     [SerializeField] private string _promptMessage; // Message to display as a prompt when the object can be interacted with.
 
     [Header("Events")]
