@@ -5,7 +5,7 @@ public class BoatController : MonoBehaviour
     public float speed = 5f; // Speed of the boat movement
     public float turnSpeed = 200f; // Speed of the boat rotation
 
-    void Update()
+    private void Update()
     {
         // Get keyboard _input for moving the boat
         float moveInput = Input.GetAxis("Vertical"); // W/S or Up/Down

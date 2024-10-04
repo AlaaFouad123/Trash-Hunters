@@ -24,7 +24,8 @@ namespace Bitgem.VFX.StylisedWater
 
         #region Public static properties
 
-        public static WaterVolumeHelper Instance { get { return instance; } }
+        public static WaterVolumeHelper Instance
+        { get { return instance; } }
 
         #endregion
 
@@ -35,6 +36,7 @@ namespace Bitgem.VFX.StylisedWater
             // ensure a water volume
             if (!WaterVolume)
             {
+                Debug.LogError("WaterVolume is not assigned.");
                 return 0f;
             }
 
@@ -42,6 +44,7 @@ namespace Bitgem.VFX.StylisedWater
             var renderer = WaterVolume.gameObject.GetComponent<MeshRenderer>();
             if (!renderer || !renderer.sharedMaterial)
             {
+                Debug.LogError("MeshRenderer or sharedMaterial is missing.");
                 return 0f;
             }
 
@@ -49,8 +52,10 @@ namespace Bitgem.VFX.StylisedWater
             var waterHeight = WaterVolume.GetHeight(_position);
             if (!waterHeight.HasValue)
             {
+                
                 return null;
             }
+
             var _WaveFrequency = renderer.sharedMaterial.GetFloat("_WaveFrequency");
             var _WaveScale = renderer.sharedMaterial.GetFloat("_WaveScale");
             var _WaveSpeed = renderer.sharedMaterial.GetFloat("_WaveSpeed");
