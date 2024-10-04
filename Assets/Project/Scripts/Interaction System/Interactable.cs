@@ -130,7 +130,7 @@ public abstract class Interactable : MonoBehaviour
         }
 
         if (_useEvents)
-            if (gameObject.TryGetComponent<InteractableEvents>(out var _events))
+            if (this.gameObject.TryGetComponent<InteractableEvents>(out var _events))
                 _events.onInteract?.Invoke();
     }
 }
