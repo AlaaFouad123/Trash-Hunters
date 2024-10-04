@@ -20,6 +20,8 @@ public class TrajectoryPredictor : MonoBehaviour
     [SerializeField, Range(1.05f, 2f), Tooltip("The raycast overlap between points in the trajectory, this is a multiplier of the length between points. 2 = twice as long")]
     private float rayOverlap = 1.1f;
 
+    private TrashManager _trashManager;
+
     #endregion Members
 
     private void Start()
@@ -27,7 +29,7 @@ public class TrajectoryPredictor : MonoBehaviour
         if (trajectoryLine == null)
             trajectoryLine = GetComponent<LineRenderer>();
 
-        SetTrajectoryVisible(true);
+        _trashManager = ServiceLocator.Instance.GetService<TrashManager>();
     }
 
     public void PredictTrajectory(ProjectileProperties projectile)
@@ -62,15 +64,7 @@ public class TrajectoryPredictor : MonoBehaviour
             UpdateLineRender(maxPoints, (i, position)); // Unnecessary to set count here, but not harmful
         }
 
-        // Check the number of points in the LineRenderer and enable/disable the system accordingly
-        if (trajectoryLine.positionCount <= 2)
-        {
-            SetTrajectoryVisible(false);
-        }
-        else
-        {
-            SetTrajectoryVisible(true);
-        }
+        _trashManager.CheckLineRenderer(trajectoryLine);
     }
 
     /// <summary>
@@ -100,14 +94,5 @@ public class TrajectoryPredictor : MonoBehaviour
         hitMarker.SetPositionAndRotation(hit.point + hit.normal * offset, Quaternion.LookRotation(hit.normal, Vector3.up));
     }
 
-    public void SetTrajectoryVisible(bool visible)
-    {
-        trajectoryLine.enabled = visible;
-        hitMarker.gameObject.SetActive(visible);
-    }
-
-    public bool IsTrajectoryVisible()
-    {
-        return trajectoryLine.enabled;
-    }
+    public bool IsTrajectoryVisible() => trajectoryLine.enabled;
 }

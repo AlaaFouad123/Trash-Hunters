@@ -37,6 +37,7 @@ public class BoatMovementController : MonoBehaviour
         _startMoveAction = _ =>
         {
             _isMoving = true;
+            PlayVFX();
             OnBoatMovementStart?.Invoke(); // Fire event when boat starts moving.
         };
 
@@ -68,7 +69,6 @@ public class BoatMovementController : MonoBehaviour
         {
             _input = _inputManager.PlayerActions.Move.ReadValue<Vector2>().normalized;
             Move();
-            PlayVFX();
         }
         else
         {

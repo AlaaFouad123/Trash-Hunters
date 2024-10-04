@@ -9,9 +9,9 @@ public class MouseLook : MonoBehaviour
     private Vector2 targetDirection;
     private Vector2 targetCharacterDirection;
 
-    public Vector2 clampInDegrees = new Vector2(360f, 180f);
-    public Vector2 sensitivity = new Vector2(0.1f, 0.1f);
-    public Vector2 smoothing = new Vector2(1f, 1f);
+    public Vector2 clampInDegrees = new(360f, 180f);
+    public Vector2 sensitivity = new(0.1f, 0.1f);
+    public Vector2 smoothing = new(1f, 1f);
 
     public bool lockCursor;
     public GameObject characterBody;
@@ -74,7 +74,7 @@ public class MouseLook : MonoBehaviour
     private void AlignToBody()
     {
         var targetCharacterOrientation = Quaternion.Euler(targetCharacterDirection);
-        Quaternion yRotation = Quaternion.identity;
+        Quaternion yRotation;
 
         // If there's a character body that acts as a parent to the camera
         if (characterBody)

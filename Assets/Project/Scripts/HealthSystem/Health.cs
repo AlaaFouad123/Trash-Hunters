@@ -5,25 +5,20 @@ public class Health
 
     public int MaxHealth
     {
-        get { return maxHealth; }
-        set 
-        {
-            maxHealth = (value < currentHealth) ? currentHealth : value;
-        }
+        get => maxHealth;
+        set => maxHealth = (value < currentHealth) ? currentHealth : value;
     }
+
     public int CurrentHealth
     {
-        get { return currentHealth; }
-        set
-        {
-            currentHealth = (value > maxHealth) ? maxHealth : (value < 0) ? 0 : value;
-        }
+        get => currentHealth;
+        set => currentHealth = (value > maxHealth) ? maxHealth : (value < 0) ? 0 : value;
     }
+
     public bool IsDead
     {
-        get { return currentHealth <= 0; }
+        get => currentHealth <= 0;
     }
-    
 
     public Health(int max = 100)
     {
@@ -31,20 +26,11 @@ public class Health
         CurrentHealth = MaxHealth;
     }
 
-    public void TakeDamage(int damage)
-    {
-        CurrentHealth -= damage;
-    }
-    public void HealDamage(int amount)
-    {
-        CurrentHealth += amount;
-    }
-    public void RestHealth()
-    {
-        CurrentHealth = MaxHealth;
-    }
-    public void Dead()
-    {
-        CurrentHealth = 0;
-    }
+    public void TakeDamage(int damage) => CurrentHealth -= damage;
+
+    public void HealDamage(int amount) => CurrentHealth += amount;
+
+    public void RestHealth() => CurrentHealth = MaxHealth;
+
+    public void Dead() => CurrentHealth = 0;
 }

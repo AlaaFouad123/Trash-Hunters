@@ -90,19 +90,19 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 839c263cc4921a64fa690418a9275464,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: -2421530137454447517}
+      addedObject: {fileID: 1595722812049142950}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 839c263cc4921a64fa690418a9275464,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: -5354621725074181744}
+      addedObject: {fileID: 5872497389651694337}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 839c263cc4921a64fa690418a9275464,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4174594082856032906}
+      addedObject: {fileID: 1086550202806895436}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 839c263cc4921a64fa690418a9275464,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6214125359040601899}
+      addedObject: {fileID: 2335804672326157325}
   m_SourcePrefab: {fileID: 100100000, guid: 839c263cc4921a64fa690418a9275464, type: 3}
 --- !u!1 &7073680997677781782 stripped
 GameObject:
@@ -110,7 +110,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7992669646607019591}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-2421530137454447517
+--- !u!114 &1595722812049142950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
   _useParticleEffect: 0
   _interactionParticals: {fileID: 0}
   _AddSFX: 0
---- !u!114 &-5354621725074181744
+--- !u!114 &5872497389651694337
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,18 +150,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: HealthImplemntation, Assembly-CSharp
-        m_MethodName: ApplyDamage
-        m_Mode: 3
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 20
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!65 &4174594082856032906
+--- !u!65 &1086550202806895436
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,7 +182,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 100, y: 88.23813, z: 120.18564}
   m_Center: {x: 0, y: 44.11905, z: 10.092949}
---- !u!64 &6214125359040601899
+--- !u!64 &2335804672326157325
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

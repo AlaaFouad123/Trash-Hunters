@@ -16,6 +16,7 @@ public class ProjectileThrow : MonoBehaviour
     private Transform StartPosition;
 
     private InputManager _inputManager;
+    private Camera _camera;
 
     private void OnEnable()
     {
@@ -26,6 +27,8 @@ public class ProjectileThrow : MonoBehaviour
 
         _inputManager = ServiceLocator.Instance.GetService<InputManager>();
         _inputManager.PlayerActions.Fire.performed += ThrowObject;
+
+        _camera = Camera.main;
     }
 
     private void Update()
@@ -37,11 +40,11 @@ public class ProjectileThrow : MonoBehaviour
     private void AdjustForceBasedOnMouseDistance()
     {
         Vector3 mousePosition = Mouse.current.position.ReadValue();
-        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.nearClipPlane));
+        Vector3 worldMousePosition = _camera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _camera.nearClipPlane));
         float distance = Vector3.Distance(worldMousePosition, StartPosition.position);
 
         // Adjust the force based on the distance, reduce the maximum force
-        force = Mathf.Clamp(distance * 0.5f, 0.0f, 1.0f); // Reduced the maximum force to 25.0f
+        force = Mathf.Clamp(distance * 0.5f, 0.0f, 50.0f); // Reduced the maximum force to 25.0f
     }
 
     private void Predict()

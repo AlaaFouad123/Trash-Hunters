@@ -17,13 +17,25 @@ public class Floater : MonoBehaviour
     private void Start()
     {
         _waterVolumeHelper = WaterVolumeHelper.Instance;
+
+        if (_rigidbody == null)
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+        }
     }
 
     private void FixedUpdate()
     {
-        foreach (var floater in _floaters)
+        if (_floaters.Length == 0)
         {
-            ApplyBuoyancy(floater);
+            ApplyBuoyancy(transform);
+        }
+        else
+        {
+            foreach (var floater in _floaters)
+            {
+                ApplyBuoyancy(floater);
+            }
         }
     }
 

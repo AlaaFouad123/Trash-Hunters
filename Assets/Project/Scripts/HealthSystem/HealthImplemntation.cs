@@ -1,49 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthImplemntation : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI currentHealth;
-    [SerializeField] TextMeshProUGUI maxHealth;
-    [SerializeField] TextMeshProUGUI isDead;
+    [SerializeField] private UnityEvent OnApplyDamage;
+    [SerializeField] private UnityEvent OnDeath;
+    private readonly Health health = new();
 
-    private Health health = new Health();
-
+    private UISystem _uiSystem;
 
     private void Start()
     {
-        maxHealth.text = "/ " + health.MaxHealth;
-        currentHealth.text = health.CurrentHealth.ToString();
+        _uiSystem = ServiceLocator.Instance.GetService<UISystem>();
+
+        _uiSystem.UpdateHealthUI(health.CurrentHealth, health.MaxHealth);
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.U))
-        {
-            health.TakeDamage(5);
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            health.HealDamage(5);
-        }
-
-        if (health.currentHealth == 0)
-        {
-            isDead.gameObject.SetActive(true);
-        }
-        else
-        {
-            isDead.gameObject.SetActive(false);
-        }
-
-        currentHealth.text = health.CurrentHealth.ToString();
-        currentHealth.color = (health.IsDead) ? Color.red : Color.white;
-    }
     public void ApplyDamage(int damage)
     {
-        health.TakeDamage(damage);
-    }
+        OnApplyDamage?.Invoke();
 
+        health.TakeDamage(damage);
+        _uiSystem.UpdateHealthUI(health.CurrentHealth, health.MaxHealth);
+
+        if (health.IsDead)
+            OnDeath?.Invoke();
+    }
 }
