@@ -12,8 +12,9 @@ public class TrashManager : MonoBehaviour
         obj.transform.parent = transform;
         //Debug.Log("interacted");
     }
-    public void DestroyObject()
+    public void DestroyObject(GameObject obj)
     {
-        Destroy(gameObject);
+        Debug.Log("Destroy");
+        Destroy(obj);
     }
 }
