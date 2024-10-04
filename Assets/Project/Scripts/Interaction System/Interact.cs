@@ -1,14 +1,15 @@
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 
 public class Interact : MonoBehaviour
 {
     // Serialized field that can be set in the Unity editor
     [SerializeField] private LayerMask _interactableLayerMask; // LayerMask to identify interactable objects
 
-    private UISystem _playerUI; // Reference to the UISystem
+  //  private System _playerUI; // Reference to the UISystem
     private Interactable currentInteractable; // The current interactable object
 
-    private ServiceLocator serviceLocator; // Reference to the ServiceLocator
+   // private ServiceLocator serviceLocator; // Reference to the ServiceLocator
 
     private bool _hasPlayedInteractSFX = false; // Flag to check if the interact sound effect has been played
     private bool _outlineEnabled = true; // Flag to check if the outline is enabled
@@ -19,13 +20,13 @@ public class Interact : MonoBehaviour
     // Called before the first frame update
     private void Start()
     {
-        serviceLocator = ServiceLocator.Instance;
+       /*  serviceLocator = ServiceLocator.Instance;
 
         if (serviceLocator.TryGetService<UISystem>(out var _UISystem))
         {
             _playerUI = _UISystem;
             _playerUI.DisablePromptText();
-        }
+        } */
     }
 
     // Called when the object enters a trigger
@@ -43,10 +44,10 @@ public class Interact : MonoBehaviour
             }
 
             // If the interactable object does not auto interact
-            if (!_interactable.AutoInteract)
+      /*       if (!_interactable.AutoInteract)
                 _playerUI.UpdatePromptText(_interactable.PromptMessage);
             else
-                StartInteraction();
+                StartInteraction(); */
         }
     }
 
@@ -75,8 +76,8 @@ public class Interact : MonoBehaviour
         if (currentInteractable == null)
             return;
 
-        if (_playerUI != null)
-            _playerUI.DisablePromptText();
+  /*       if (_playerUI != null)
+            _playerUI.DisablePromptText(); */
 
         currentInteractable.RemoveOutline();
         currentInteractable = null;

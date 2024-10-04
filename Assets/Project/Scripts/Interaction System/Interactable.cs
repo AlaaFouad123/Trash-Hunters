@@ -62,7 +62,7 @@ public abstract class Interactable : MonoBehaviour
 
         if (outlineMaterial == null)
         {
-            Logging.LogError("outlineMaterial is null");
+           // Logging.LogError("outlineMaterial is null");
             return;
         }
 
@@ -112,8 +112,8 @@ public abstract class Interactable : MonoBehaviour
     {
         if (((1 << gameObject.layer) & _layersInteractedWith) != 0)
             Interact();
-        else
-            Logging.LogWarning($"Object {gameObject.name} is not interactable");
+       // else
+           // Logging.LogWarning($"Object {gameObject.name} is not interactable");
     }
 
     // Abstract method to be implemented by derived classes to define specific interaction logic.
@@ -130,8 +130,8 @@ public abstract class Interactable : MonoBehaviour
         //{
         //}
 
-        if (_useEvents)
+       /*  if (_useEvents)
             if (gameObject.TryGetComponent<InteractableEvents>(out var _events))
-                _events.onInteract.Invoke();
+                _events.onInteract.Invoke(); */
     }
 }
