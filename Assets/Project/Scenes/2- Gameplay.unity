@@ -16663,8 +16663,7 @@ MonoBehaviour:
   _moveSpeed: 5
   _acceleration: 10
   _rotationSpeed: 50
-  _boatVFX:
-  - {fileID: 1495252265}
+  _boatVFX: {fileID: 1495252265}
   OnBoatMovementStart:
     m_PersistentCalls:
       m_Calls:
