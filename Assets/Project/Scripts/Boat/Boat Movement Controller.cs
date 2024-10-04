@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -11,7 +10,7 @@ public class BoatMovementController : MonoBehaviour
     [SerializeField] private float _rotationSpeed = 100f; // Speed of the boat rotation.
 
     [Header("VFX")]
-    [SerializeField] private List<ParticleSystem> _boatVFX; // List of boat VFX.
+    [SerializeField] private ParticleSystem _boatVFX; // List of boat VFX.
 
     private Rigidbody _rigidbody;
     private Vector2 _input;
@@ -90,25 +89,7 @@ public class BoatMovementController : MonoBehaviour
         _rigidbody.MoveRotation(Quaternion.Slerp(_rigidbody.rotation, targetRotationQuaternion, Time.deltaTime * _rotationSpeed));
     }
 
-    private void PlayVFX()
-    {
-        foreach (var vfx in _boatVFX)
-        {
-            if (!vfx.isPlaying)
-            {
-                vfx.Play();
-            }
-        }
-    }
+    private void PlayVFX() => _boatVFX.Play();
 
-    private void StopVFX()
-    {
-        foreach (var vfx in _boatVFX)
-        {
-            if (vfx.isPlaying)
-            {
-                vfx.Stop();
-            }
-        }
-    }
+    private void StopVFX() => _boatVFX.Stop();
 }
