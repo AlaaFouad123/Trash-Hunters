@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 
 public class BoatMovementController : MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed = 5f; // Speed of the boat movement.
+    [SerializeField] private float _moveSpeed = 5f; // Maximum speed of the boat movement.
+    [SerializeField] private float _acceleration = 2f; // Acceleration of the boat.
     [SerializeField] private float _rotationSpeed = 100f; // Speed of the boat rotation.
-    [SerializeField] private float _drag = 0.1f; // Drag to simulate water resistance.
 
     [Header("VFX")]
     [SerializeField] private List<ParticleSystem> _boatVFX; // List of boat VFX.
@@ -30,7 +30,6 @@ public class BoatMovementController : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _rigidbody.drag = _drag; // Apply drag to the rigidbody.
     }
 
     private void OnEnable()
@@ -81,11 +80,14 @@ public class BoatMovementController : MonoBehaviour
     private void Move()
     {
         Vector3 targetVelocity = -_input.y * _moveSpeed * transform.forward;
-        _rigidbody.velocity = Vector3.Lerp(_rigidbody.velocity, targetVelocity, Time.deltaTime * _moveSpeed);
+        _rigidbody.velocity = Vector3.MoveTowards(_rigidbody.velocity, targetVelocity, _acceleration * Time.deltaTime);
 
         float targetRotation = _input.x * _rotationSpeed * Time.deltaTime;
         Quaternion deltaRotation = Quaternion.Euler(Vector3.up * targetRotation);
-        _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
+        Quaternion targetRotationQuaternion = _rigidbody.rotation * deltaRotation;
+
+        // Smoothly interpolate between the current rotation and the target rotation
+        _rigidbody.MoveRotation(Quaternion.Slerp(_rigidbody.rotation, targetRotationQuaternion, Time.deltaTime * _rotationSpeed));
     }
 
     private void PlayVFX()
