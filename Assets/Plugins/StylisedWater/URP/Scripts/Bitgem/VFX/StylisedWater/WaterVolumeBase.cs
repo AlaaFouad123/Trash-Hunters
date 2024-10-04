@@ -63,8 +63,10 @@ namespace Bitgem.VFX.StylisedWater
 
         #region Private methods
 
-        private void ensureReferences()
+        private void EnsureReferences()
         {
+            tiles ??= new bool[MAX_TILES_X, MAX_TILES_Y, MAX_TILES_Z];
+
             // ensure a mesh filter
             if (meshFilter == null)
             {
@@ -97,6 +99,15 @@ namespace Bitgem.VFX.StylisedWater
 
         public float? GetHeight(Vector3 _position)
         {
+            EnsureReferences();
+
+            // Ensure tiles array is initialized
+            if (tiles == null)
+            {
+                Debug.LogError("Tiles array is not initialized.");
+                return null;
+            }
+
             // convert the position to a tile
             var x = Mathf.FloorToInt((_position.x - transform.position.x + 0.5f) / TileSize);
             var z = Mathf.FloorToInt((_position.z - transform.position.z + 0.5f) / TileSize);
@@ -104,6 +115,7 @@ namespace Bitgem.VFX.StylisedWater
             // check if out of bounds
             if (x < 0 || x >= MAX_TILES_X || z < 0 || z >= MAX_TILES_Z)
             {
+                Debug.LogError($"Position is out of bounds. x: {x}, z: {z}");
                 return null;
             }
 
@@ -126,7 +138,7 @@ namespace Bitgem.VFX.StylisedWater
             Debug.Log("rebuilding water volume \"" + gameObject.name + "\"");
 
             // ensure references to components before trying to use them
-            ensureReferences();
+            EnsureReferences();
 
             // delete any existing mesh
             mesh.Clear();
@@ -364,14 +376,17 @@ namespace Bitgem.VFX.StylisedWater
 
         #region Virtual methods
 
-        protected virtual void GenerateTiles(ref bool[,,] _tiles) { }
-        public virtual void Validate() { }
+        protected virtual void GenerateTiles(ref bool[,,] _tiles)
+        { }
+
+        public virtual void Validate()
+        { }
 
         #endregion
 
         #region MonoBehaviour events
 
-        void OnValidate()
+        private void OnValidate()
         {
             // keep tile size in a sensible range
             TileSize = Mathf.Clamp(TileSize, 0.1f, 100f);
@@ -383,7 +398,7 @@ namespace Bitgem.VFX.StylisedWater
             isDirty = true;
         }
 
-        void Update()
+        private void Update()
         {
             // rebuild if needed
             if (isDirty || (!Application.isPlaying && RealtimeUpdates))

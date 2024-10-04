@@ -1,3 +1,4 @@
+using Bitgem.VFX.StylisedWater;
 using UnityEngine;
 
 public class Floater : MonoBehaviour
@@ -10,32 +11,24 @@ public class Floater : MonoBehaviour
     [SerializeField] private float _waterDrag = 0.99f; // Drag when submerged.
     [SerializeField] private float _waterAngularDrag = 0.5f; // Angular drag when submerged.
 
-    private WaveManager _waveManager;
+    private WaterVolumeHelper _waterVolumeHelper;
 
     private void Start()
     {
-        _waveManager = ServiceLocator.Instance.GetService<WaveManager>();
+        _waterVolumeHelper = WaterVolumeHelper.Instance;
     }
-
-    //private void FixedUpdate()
-    //{
-    //    float waveHeight = ServiceLocator.Instance.GetService<WaveManager>().GetWaveHeight(transform.position.x);
-    //    if (transform.position.y < waveHeight)
-    //    {
-    //        float displacementMultiplier = Mathf.Clamp01((waveHeight - transform.position.y) / _depthBeforeSubmerged) * _displacementAmount;
-    //        _rigidbody.AddForce(new Vector3(0f, Mathf.Abs(Physics.gravity.y) * displacementMultiplier, 0f), ForceMode.Acceleration);
-    //    }
-    //}
 
     private void FixedUpdate()
     {
         _rigidbody.AddForceAtPosition(Physics.gravity / _floaterCount, transform.position, ForceMode.Acceleration);
 
-        float waveHeight = _waveManager.GetWaveHeight(transform.position.x);
-        if (transform.position.y < waveHeight)
+        Vector3 position = transform.position;
+
+        float? waveHeight = _waterVolumeHelper.GetHeight(position);
+        if (waveHeight.HasValue && position.y < waveHeight.Value)
         {
-            float displacementMultiplier = Mathf.Clamp01((waveHeight - transform.position.y) / _depthBeforeSubmerged) * _displacementAmount;
-            _rigidbody.AddForceAtPosition(new Vector3(0f, Mathf.Abs(Physics.gravity.y) * displacementMultiplier, 0f), transform.position, ForceMode.Acceleration);
+            float displacementMultiplier = Mathf.Clamp01((waveHeight.Value - position.y) / _depthBeforeSubmerged) * _displacementAmount;
+            _rigidbody.AddForceAtPosition(new Vector3(0f, Mathf.Abs(Physics.gravity.y) * displacementMultiplier, 0f), position, ForceMode.Acceleration);
 
             _rigidbody.AddForce(_waterDrag * displacementMultiplier * Time.fixedDeltaTime * -_rigidbody.velocity, ForceMode.VelocityChange);
             _rigidbody.AddTorque(_waterAngularDrag * displacementMultiplier * Time.fixedDeltaTime * -_rigidbody.angularVelocity, ForceMode.VelocityChange);
