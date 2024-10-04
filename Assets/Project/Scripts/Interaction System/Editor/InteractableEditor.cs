@@ -80,7 +80,7 @@ public class InteractableEditor : Editor
             _interactable.PromptMessage = EditorGUILayout.TextArea(_interactable.PromptMessage, GUILayout.MaxHeight(75));
         }
 
-        if (_interactable.UseEvents)
+       /*  if (_interactable.UseEvents)
         {
             if (_interactable.gameObject.GetComponent<InteractableEvents>() == null)
                 _interactable.gameObject.AddComponent<InteractableEvents>();
@@ -89,7 +89,7 @@ public class InteractableEditor : Editor
         {
             if (_interactable.gameObject.GetComponent<InteractableEvents>() != null)
                 DestroyImmediate(_interactable.gameObject.GetComponent<InteractableEvents>());
-        }
+        } */
 
         so.ApplyModifiedProperties();
     }
