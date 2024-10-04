@@ -1,9 +1,21 @@
 fileFormatVersion: 2
-guid: 407634973e1acb149a548d32def443fc
+guid: 7454e17b283ddd442a3b5bdd48b7f86f
+AssetOrigin:
+  serializedVersion: 1
+  productId: 189866
+  packageName: PolyPack Boats - LowPoly 3D Models
+  packageVersion: 1.2
+  assetPath: Assets/Alstra Infinite/Boats LowPoly/Models/1.2 Version/Fishing_Rod.fbx
+  uploadId: 445026
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PolyPack_Boats
+    second: {fileID: 2100000, guid: add612cfd0b428a49ac1fed73a33d3d1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -39,11 +51,11 @@ ModelImporter:
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
-    nodeNameCollisionStrategy: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 0
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -76,7 +88,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -95,12 +107,12 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
-  importBlendShapeDeformPercent: 1
-  remapMaterialsIfMaterialImportModeIsNone: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
