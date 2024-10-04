@@ -107,13 +107,13 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _WaveFrequency: 1.75
-    - _WaveScale: 0.05
+    - _WaveScale: 0.02
     - _WaveSpeed: 1.5
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - Color_7D9A58EC: {r: 0.41981128, g: 0.87058824, b: 0.9848235, a: 1}
-    - Color_F01C36BF: {r: 0.5254902, g: 0.77647066, b: 0.76470596, a: 1}
+    - Color_F01C36BF: {r: 0.41176474, g: 0.5869798, b: 1, a: 1}
     - Vector2_37B21477: {r: 0.35, g: 0.6, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
