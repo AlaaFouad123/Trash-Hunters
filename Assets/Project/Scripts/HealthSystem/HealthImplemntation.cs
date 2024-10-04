@@ -41,5 +41,9 @@ public class HealthImplemntation : MonoBehaviour
         currentHealth.text = health.CurrentHealth.ToString();
         currentHealth.color = (health.IsDead) ? Color.red : Color.white;
     }
+    public void ApplyDamage(int damage)
+    {
+        health.TakeDamage(damage);
+    }
 
 }
