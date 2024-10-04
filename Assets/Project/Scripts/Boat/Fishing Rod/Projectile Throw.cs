@@ -40,8 +40,8 @@ public class ProjectileThrow : MonoBehaviour
         Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.nearClipPlane));
         float distance = Vector3.Distance(worldMousePosition, StartPosition.position);
 
-        // Adjust the force based on the distance
-        force = Mathf.Clamp(distance, 0.0f, 50.0f);
+        // Adjust the force based on the distance, reduce the maximum force
+        force = Mathf.Clamp(distance * 0.5f, 0.0f, 1.0f); // Reduced the maximum force to 25.0f
     }
 
     private void Predict()
@@ -52,7 +52,7 @@ public class ProjectileThrow : MonoBehaviour
     private ProjectileProperties ProjectileData()
     {
         ProjectileProperties properties = new();
-        Rigidbody r = objectToThrow.GetComponent<Rigidbody>();
+        Rigidbody r = objectToThrow;
 
         properties.direction = StartPosition.forward;
         properties.initialPosition = StartPosition.position;
