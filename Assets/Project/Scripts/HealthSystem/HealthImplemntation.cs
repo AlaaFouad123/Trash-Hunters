@@ -33,6 +33,10 @@ public class HealthImplemntation : MonoBehaviour
         {
             isDead.gameObject.SetActive(true);
         }
+        else
+        {
+            isDead.gameObject.SetActive(false);
+        }
 
         currentHealth.text = health.CurrentHealth.ToString();
         currentHealth.color = (health.IsDead) ? Color.red : Color.white;
