@@ -7,9 +7,10 @@ public class Floater : MonoBehaviour
 
     [SerializeField] private float _depthBeforeSubmerged = 1f; // Depth at which the object is considered submerged.
     [SerializeField] private float _displacementAmount = 3f; // Amount of force to apply to the object when submerged.
-    [SerializeField] private int _floaterCount = 1; // Number of floaters on the object.
+    [SerializeField] private int _floaterCount = 4; // Number of floaters on the object.
     [SerializeField] private float _waterDrag = 0.99f; // Drag when submerged.
     [SerializeField] private float _waterAngularDrag = 0.5f; // Angular drag when submerged.
+    [SerializeField] private Transform[] _floaters; // Array of floater positions.
 
     private WaterVolumeHelper _waterVolumeHelper;
 
@@ -20,9 +21,16 @@ public class Floater : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidbody.AddForceAtPosition(Physics.gravity / _floaterCount, transform.position, ForceMode.Acceleration);
+        foreach (var floater in _floaters)
+        {
+            ApplyBuoyancy(floater);
+        }
+    }
 
-        Vector3 position = transform.position;
+    private void ApplyBuoyancy(Transform floater)
+    {
+        Vector3 position = floater.position;
+        _rigidbody.AddForceAtPosition(Physics.gravity / _floaterCount, position, ForceMode.Acceleration);
 
         float? waveHeight = _waterVolumeHelper.GetHeight(position);
         if (waveHeight.HasValue && position.y < waveHeight.Value)

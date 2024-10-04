@@ -79,7 +79,8 @@ public class BoatMovementController : MonoBehaviour
     private void Move()
     {
         Vector3 targetVelocity = -_input.y * _moveSpeed * transform.forward;
-        _rigidbody.velocity = Vector3.MoveTowards(_rigidbody.velocity, targetVelocity, _acceleration * Time.deltaTime);
+        Vector3 velocityChange = Vector3.ClampMagnitude(targetVelocity - _rigidbody.velocity, _acceleration * Time.deltaTime);
+        _rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
 
         float targetRotation = _input.x * _rotationSpeed * Time.deltaTime;
         Quaternion deltaRotation = Quaternion.Euler(Vector3.up * targetRotation);
