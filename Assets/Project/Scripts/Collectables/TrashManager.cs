@@ -51,4 +51,10 @@ public class TrashManager : MonoBehaviour
             _plane.SetActive(false);
         }
     }
+
+    // New method to check if there is a current game object
+    public bool HasCurrentGameObject()
+    {
+        return _currentGameObject != null;
+    }
 }

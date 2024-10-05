@@ -72,6 +72,16 @@ public class ProjectileThrow : MonoBehaviour
 
     private void ThrowObject(InputAction.CallbackContext ctx)
     {
+        // Get the TrashManager service
+        TrashManager trashManager = ServiceLocator.Instance.GetService<TrashManager>();
+
+        // Check if there is already a trash object
+        if (trashManager.HasCurrentGameObject())
+        {
+            // Do not allow shooting if there is a current game object
+            return;
+        }
+
         if (trajectoryPredictor.IsTrajectoryVisible())
         {
             Rigidbody thrownObject = Instantiate(objectToThrow, StartPosition.position, Quaternion.identity);
