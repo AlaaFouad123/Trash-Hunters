@@ -71,8 +71,7 @@ namespace Bitgem.VFX.StylisedWater
             if (meshFilter == null)
             {
                 mesh = null;
-                meshFilter = gameObject.GetComponent<MeshFilter>();
-                if (meshFilter == null)
+                if (!gameObject.TryGetComponent<MeshFilter>(out meshFilter))
                 {
                     meshFilter = gameObject.AddComponent<MeshFilter>();
                 }
@@ -84,8 +83,10 @@ namespace Bitgem.VFX.StylisedWater
                 mesh = meshFilter.sharedMesh;
                 if (mesh == null || mesh.name != "WaterVolume-" + gameObject.GetInstanceID())
                 {
-                    mesh = new UnityEngine.Mesh();
-                    mesh.name = "WaterVolume-" + gameObject.GetInstanceID();
+                    mesh = new UnityEngine.Mesh
+                    {
+                        name = "WaterVolume-" + gameObject.GetInstanceID()
+                    };
                 }
             }
 

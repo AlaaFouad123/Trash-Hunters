@@ -12,6 +12,12 @@ public class UISystem : MonoBehaviour
     [Header("Health UI Elements")]
     [SerializeField] private TextMeshProUGUI _healthText;
 
+    [Header("Score UI Elements")]
+    [SerializeField] private TextMeshProUGUI _scoreText;
+
+    [Header("Timer UI Elements")]
+    [SerializeField] private TextMeshProUGUI _timerText;
+
     private void Awake() => ServiceLocator.Instance.RegisterService(this, false);
 
     #region Interaction UI
@@ -46,4 +52,16 @@ public class UISystem : MonoBehaviour
     }
 
     #endregion Scene Management
+
+    #region Score
+
+    internal void UpdateScoreUI(int _score, int _maxScore) => _scoreText.text = _score + " / " + _maxScore;
+
+    #endregion Score
+
+    #region Timer
+
+    internal void UpdateTimer(float _currentTime) => _timerText.text = _currentTime.ToString();
+
+    #endregion Timer
 }
