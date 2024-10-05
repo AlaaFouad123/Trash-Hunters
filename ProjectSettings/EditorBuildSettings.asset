@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Project/Scenes/3- LOSE.unity
     guid: 73b2f34e5fa2a734e930a9b208278ee3
+  - enabled: 1
+    path: Assets/Project/Scenes/4- Winner.unity
+    guid: 0f47527c1c2064a4eb04a1d8339ca90e
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
