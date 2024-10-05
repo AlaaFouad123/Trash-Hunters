@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UISystem : MonoBehaviour
 {
@@ -30,4 +31,19 @@ public class UISystem : MonoBehaviour
     internal void UpdateHealthUI(float _currentHealth, float _maxHealth) => _healthText.text = _currentHealth + " / " + _maxHealth;
 
     #endregion Health UI
+
+    #region Scene Management
+
+    public void LoadScene(int _sceneID) => SceneManager.LoadScene(_sceneID);
+
+    public void QuitGame()
+    {
+        Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
+
+    #endregion Scene Management
 }
