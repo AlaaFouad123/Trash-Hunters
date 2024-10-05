@@ -6,6 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Project/Scenes/Huda/Alaa/Home.unity
+    guid: f95a6da0e76083f4a9c0819c55a35d78
+  - enabled: 1
+    path: Assets/Project/Scenes/2- Gameplay.unity
+    guid: db146cf16cf4ceb48b7839a5ab94bd32
+  - enabled: 1
+    path: Assets/Project/Scenes/Huda/Alaa/LOSE.unity
+    guid: 73b2f34e5fa2a734e930a9b208278ee3
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
