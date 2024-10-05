@@ -31,6 +31,10 @@ public class ProjectileThrow : MonoBehaviour
         _camera = Camera.main;
     }
 
+    private void OnDisable() => _inputManager.PlayerActions.Fire.performed -= ThrowObject;
+
+    private void OnDestroy() => _inputManager.PlayerActions.Fire.performed -= ThrowObject;
+
     private void Update()
     {
         AdjustForceBasedOnMouseDistance();

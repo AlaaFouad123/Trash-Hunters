@@ -1,10 +1,8 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class TrashManager : MonoBehaviour
 {
     [SerializeField] private GameObject _plane;
-    [SerializeField] private UnityEvent _onScoreUpdate;
 
     private GameObject _currentGameObject;
 
@@ -44,7 +42,8 @@ public class TrashManager : MonoBehaviour
             _lineRenderer.enabled = true;
             _plane.SetActive(true);
 
-            _onScoreUpdate?.Invoke();
+            int randomScore = Random.Range(1, 11); // Generates a random value between 1 and 10 (inclusive)
+            ServiceLocator.Instance.GetService<ScoreSystem>().UpdateScore(randomScore);
         }
         else if (_lineRenderer.positionCount > 2 && _currentGameObject != null)
         {
